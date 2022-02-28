@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/teamAScore_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="30sp"
+        android:freezesText="true"
+        app:layout_constraintBaseline_toBaselineOf="@+id/teamBScore_tv"
+        app:layout_constraintEnd_toStartOf="@+id/teamBScore_tv"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/teamBScore_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:text="0"
+        android:textSize="30sp"
+        android:freezesText="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/teamAScore_tv"
+        app:layout_constraintTop_toBottomOf="@+id/teamBName_tv" />
+
+    <TextView
+        android:id="@+id/teamAName_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TEAM A"
+        app:layout_constraintBaseline_toBaselineOf="@+id/teamBName_tv"
+        app:layout_constraintEnd_toEndOf="@+id/teamAScore_tv"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="@+id/teamAScore_tv" />
+
+    <TextView
+        android:id="@+id/teamBName_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="TEAM B"
+        app:layout_constraintEnd_toEndOf="@+id/teamBScore_tv"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="@+id/teamBScore_tv"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/addScoreA_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+1"
+        app:layout_constraintBaseline_toBaselineOf="@+id/addScoreB_btn"
+        app:layout_constraintEnd_toEndOf="@+id/teamAScore_tv"
+        app:layout_constraintStart_toStartOf="@+id/teamAScore_tv" />
+
+    <Button
+        android:id="@+id/addScoreB_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="+1"
+        app:layout_constraintEnd_toEndOf="@+id/teamBScore_tv"
+        app:layout_constraintStart_toStartOf="@+id/teamBScore_tv"
+        app:layout_constraintTop_toBottomOf="@+id/teamBScore_tv" />
+
+    <Button
+        android:id="@+id/subScoreA_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-1"
+        app:layout_constraintBaseline_toBaselineOf="@+id/subScoreB_btn"
+        app:layout_constraintEnd_toEndOf="@+id/addScoreA_btn"
+        app:layout_constraintStart_toStartOf="@+id/addScoreA_btn"
+        tools:ignore="UnknownId" />
+
+    <Button
+        android:id="@+id/subScoreB_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="-1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/addScoreB_btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/addScoreB_btn"
+        app:layout_constraintTop_toBottomOf="@+id/addScoreB_btn"
+        app:layout_constraintVertical_bias="0.055" />
+
+    <View
+        android:layout_width="5dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="60dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/addScoreB_btn"
+        app:layout_constraintStart_toEndOf="@+id/addScoreA_btn"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
