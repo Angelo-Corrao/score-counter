@@ -10,49 +10,46 @@
         android:id="@+id/teamAScore_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:freezesText="true"
         android:text="0"
         android:textSize="30sp"
+        android:freezesText="true"
         app:layout_constraintBaseline_toBaselineOf="@+id/teamBScore_tv"
-        app:layout_constraintEnd_toEndOf="@+id/teamAName_tv"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintEnd_toStartOf="@+id/teamBScore_tv"
         app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="@+id/teamAName_tv" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/teamBScore_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:freezesText="true"
+        android:layout_marginTop="84dp"
         android:text="0"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/teamBName_tv"
-        app:layout_constraintStart_toStartOf="@+id/teamBName_tv"
+        android:freezesText="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/teamAScore_tv"
         app:layout_constraintTop_toBottomOf="@+id/teamBName_tv" />
 
     <TextView
         android:id="@+id/teamAName_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
         android:text="TEAM A"
         app:layout_constraintBaseline_toBaselineOf="@+id/teamBName_tv"
-        app:layout_constraintEnd_toStartOf="@+id/teamBName_tv"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/teamAScore_tv"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="@+id/teamAScore_tv" />
 
     <TextView
         android:id="@+id/teamBName_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginTop="60dp"
         android:text="TEAM B"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/teamAName_tv"
+        app:layout_constraintEnd_toEndOf="@+id/teamBScore_tv"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="@+id/teamBScore_tv"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -100,7 +97,7 @@
     <View
         android:layout_width="5dp"
         android:layout_height="500dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="60dp"
         android:background="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/addScoreB_btn"
         app:layout_constraintStart_toEndOf="@+id/addScoreA_btn"
