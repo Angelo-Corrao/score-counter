@@ -1,21 +1,23 @@
 package com.example.scorecounter
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity() {
-    private var scoreTeamA = 0
-    private var scoreTeamB = 0
+    // var model: MainActivityViewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+    private val viewModel: MainActivityViewModel by viewModels() // "by viewModels() substitute the ViewModelProvider and you can use it implementing the Android KTX API
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (savedInstanceState != null) {
-            scoreTeamA = savedInstanceState.getInt("scoreTeamA")
-            scoreTeamB = savedInstanceState.getInt("scoreTeamB")
+        //if (savedInstanceState != null) {
+        //   scoreTeamA = savedInstanceState.getInt("scoreTeamA")
+        //   scoreTeamB = savedInstanceState.getInt("scoreTeamB")
 
             /*Istead of this two line of code use the property "android:freezesText="true"" on the
             xml file. Use this first mentioned property only if the TextView show data saved on the
@@ -23,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
             teamAScore_tv.text = scoreTeamA.toString()
             teamBScore_tv.text = scoreTeamB.toString()*/
-        }
+        //}
 
         addScoreA_btn.setOnClickListener {
             updateScore(it.id)
@@ -45,33 +47,36 @@ class MainActivity : AppCompatActivity() {
     private fun updateScore(id: Int) {
         when (id) {
             R.id.addScoreA_btn ->{
-                scoreTeamA += 1
-                teamAScore_tv.text = scoreTeamA.toString()
+                viewModel.scoreTeamA += 1
+                teamAScore_tv.text = viewModel.scoreTeamA.toString()
             }
 
             R.id.addScoreB_btn ->{
-                scoreTeamB += 1
-                teamBScore_tv.text = scoreTeamB.toString()
+                viewModel.scoreTeamB += 1
+                teamBScore_tv.text = viewModel.scoreTeamB.toString()
             }
 
             R.id.subScoreA_btn ->{
-                scoreTeamA -= 1
-                teamAScore_tv.text = scoreTeamA.toString()
+                viewModel.scoreTeamA -= 1
+                teamAScore_tv.text = viewModel.scoreTeamA.toString()
             }
 
             R.id.subScoreB_btn ->{
-                scoreTeamB -= 1
-                teamBScore_tv.text = scoreTeamB.toString()
+                viewModel.scoreTeamB -= 1
+                teamBScore_tv.text = viewModel.scoreTeamB.toString()
             }
         }
     }
+
+    /*This Method is commented for training with ViewModel but in this case we should use this instead
+    because we need to save only two simple data
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
         outState.putInt("scoreTeamA", scoreTeamA)
         outState.putInt("scoreTeamB", scoreTeamB)
-    }
+    }*/
 
     /* This method is called after onStart() only when the OS Destroy and then Recreate the activity
     such as when you rotate the phone or when the OS kills your activity in order to free memory and
