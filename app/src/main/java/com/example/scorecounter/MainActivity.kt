@@ -4,16 +4,18 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.scorecounter.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     // var model: MainActivityViewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
     private val viewModel: MainActivityViewModel by viewModels() // "by viewModels() substitute the ViewModelProvider and you can use it implementing the Android KTX API
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //if (savedInstanceState != null) {
         //   scoreTeamA = savedInstanceState.getInt("scoreTeamA")
@@ -27,19 +29,19 @@ class MainActivity : AppCompatActivity() {
             teamBScore_tv.text = scoreTeamB.toString()*/
         //}
 
-        addScoreA_btn.setOnClickListener {
+        binding.addScoreABtn.setOnClickListener {
             updateScore(it.id)
         }
 
-        addScoreB_btn.setOnClickListener {
+        binding.addScoreBBtn.setOnClickListener {
             updateScore(it.id)
         }
 
-        subScoreA_btn.setOnClickListener {
+        binding.subScoreABtn.setOnClickListener {
             updateScore(it.id)
         }
 
-        subScoreB_btn.setOnClickListener {
+        binding.subScoreBBtn.setOnClickListener {
             updateScore(it.id)
         }
     }
@@ -48,22 +50,22 @@ class MainActivity : AppCompatActivity() {
         when (id) {
             R.id.addScoreA_btn ->{
                 viewModel.scoreTeamA += 1
-                teamAScore_tv.text = viewModel.scoreTeamA.toString()
+                binding.teamAScoreTv.text = viewModel.scoreTeamA.toString()
             }
 
             R.id.addScoreB_btn ->{
                 viewModel.scoreTeamB += 1
-                teamBScore_tv.text = viewModel.scoreTeamB.toString()
+                binding.teamBScoreTv.text = viewModel.scoreTeamB.toString()
             }
 
             R.id.subScoreA_btn ->{
                 viewModel.scoreTeamA -= 1
-                teamAScore_tv.text = viewModel.scoreTeamA.toString()
+                binding.teamAScoreTv.text = viewModel.scoreTeamA.toString()
             }
 
             R.id.subScoreB_btn ->{
                 viewModel.scoreTeamB -= 1
-                teamBScore_tv.text = viewModel.scoreTeamB.toString()
+                binding.teamBScoreTv.text = viewModel.scoreTeamB.toString()
             }
         }
     }
